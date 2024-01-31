@@ -20,10 +20,13 @@ class Explosion {
     this.frame = 0;
     this.timer = 0;
     this.staggerFrames = 5;
+    this.sound = new Audio()
+    this.sound.src = 'assets/explode.wav'
   }
 
   update() {
     this.timer++;
+    if (this.frame === 0) this.sound.play();
     if (this.timer % this.staggerFrames === 0) {
       this.frame++;
     }
