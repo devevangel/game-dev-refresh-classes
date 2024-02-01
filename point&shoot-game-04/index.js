@@ -9,12 +9,13 @@ let ravens = [];
 let timeToNextRaven = 0
 let ravenInterval = 500
 let lastTime = 0;
+let score = 0
 
 class Raven {
     constructor() {
         this.spriteWidth = 271
         this.spriteHeight = 194
-        this.size = Math.random() * 0.6 + 0.4
+        this.size = Math.random() * 0.2 + 0.4
         this.width = this.spriteWidth * this.size;
         this.height = this.spriteHeight * this.size
         this.x = canvas.width
@@ -53,10 +54,9 @@ class Raven {
 
 function gameLooop(timestamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.fillStyle = 'white'
     let deltaTime = timestamp - lastTime
     lastTime = timestamp
-    timeToNextRaven += deltaTime;
+    timeToNextRaven = timeToNextRaven + deltaTime;
     if (timeToNextRaven > ravenInterval) {
         ravens.push(new Raven())
         timeToNextRaven = 0
